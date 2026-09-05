@@ -1,0 +1,766 @@
+{
+  "lastSyncTime": "2026-09-05T07:19:38.555Z",
+  "zones": [
+    {
+      "id": "zone-1",
+      "name": "test area 1",
+      "description": "Central tourist and business district",
+      "apartmentCount": 1
+    },
+    {
+      "id": "zone-2",
+      "name": "test area 2",
+      "description": "Coastal marina and residential avenue",
+      "apartmentCount": 1
+    }
+  ],
+  "owners": [
+    {
+      "id": "owner-1",
+      "name": "Alexander Wright",
+      "email": "alex.wright@propowner.com",
+      "phone": "+1 (555) 234-8901",
+      "apartmentIds": [
+        "apt-1"
+      ],
+      "commissionRate": 15,
+      "monthlyEarnings": 4250,
+      "status": "active"
+    },
+    {
+      "id": "owner-2",
+      "name": "Sophia Lorenze",
+      "email": "sophia.l@investproperties.net",
+      "phone": "+1 (555) 345-6712",
+      "apartmentIds": [
+        "apt-2"
+      ],
+      "commissionRate": 18,
+      "monthlyEarnings": 5890,
+      "status": "active"
+    },
+    {
+      "id": "owner-3",
+      "name": "Marcus Sterling",
+      "email": "marcus@sterlingholdings.co",
+      "phone": "+1 (555) 789-1234",
+      "apartmentIds": [],
+      "commissionRate": 15,
+      "monthlyEarnings": 0,
+      "status": "active"
+    },
+    {
+      "id": "owner-4",
+      "name": "Elena Rostova",
+      "email": "elena.rostova@azurehaven.org",
+      "phone": "+1 (555) 901-4567",
+      "apartmentIds": [],
+      "commissionRate": 20,
+      "monthlyEarnings": 0,
+      "status": "active"
+    }
+  ],
+  "apartments": [
+    {
+      "id": "apt-1",
+      "name": "test 1",
+      "areaId": "zone-2",
+      "areaName": "test area 2",
+      "address": "Seaside Boulevard 42, Apt 4B",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "maxGuests": 4,
+      "keyLockboxCode": "4829",
+      "smartLockPin": "9012#",
+      "wifiSsid": "PropFlow-Test1",
+      "wifiPassword": "OceanView2026!",
+      "ownerId": "owner-1",
+      "ownerName": "Alexander Wright",
+      "status": "active",
+      "imageUrl": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&auto=format&fit=crop&q=80",
+      "notes": "Terrace key is hanging inside entry hall. Check balcony sliding lock."
+    },
+    {
+      "id": "apt-2",
+      "name": "test 2",
+      "areaId": "zone-1",
+      "areaName": "test area 1",
+      "address": "Grand Avenue 108, Penthouse 12",
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "maxGuests": 6,
+      "keyLockboxCode": "7731",
+      "smartLockPin": "5543#",
+      "wifiSsid": "PropFlow-Test2",
+      "wifiPassword": "GrandPenthouse26!",
+      "ownerId": "owner-2",
+      "ownerName": "Sophia Lorenze",
+      "status": "active",
+      "imageUrl": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&auto=format&fit=crop&q=80",
+      "notes": "Wine cooler requires reset after power dips. Master bedroom has King bed."
+    }
+  ],
+  "users": [
+    {
+      "id": "user-admin",
+      "name": "Administrator Administrator",
+      "email": "admin@propflow.com",
+      "role": "administrator",
+      "avatar": "AD",
+      "phone": "+1 (555) 001-1122",
+      "active": true
+    },
+    {
+      "id": "user-manager",
+      "name": "Sarah Connor (Ops Manager)",
+      "email": "operations@propflow.com",
+      "role": "operations_manager",
+      "avatar": "SC",
+      "phone": "+1 (555) 002-2233",
+      "active": true
+    },
+    {
+      "id": "user-cleaner-1",
+      "name": "Elena Volkova",
+      "email": "elena.cleaner@propflow.com",
+      "role": "cleaner",
+      "avatar": "EV",
+      "telegramPin": "482910",
+      "telegramChatId": "chat_simulated_active",
+      "phone": "+1 (555) 444-1234",
+      "active": true
+    },
+    {
+      "id": "user-cleaner-2",
+      "name": "Marco Santos",
+      "email": "marco.cleaner@propflow.com",
+      "role": "cleaner",
+      "avatar": "MS",
+      "telegramPin": "719304",
+      "phone": "+1 (555) 444-5678",
+      "active": true
+    },
+    {
+      "id": "user-maint-1",
+      "name": "David Reynolds",
+      "email": "david.tech@propflow.com",
+      "role": "maintenance",
+      "avatar": "DR",
+      "telegramPin": "593821",
+      "telegramChatId": "chat_david_202",
+      "phone": "+1 (555) 888-9900",
+      "active": true
+    },
+    {
+      "id": "user-owner-1",
+      "name": "Alexander Wright",
+      "email": "alex.wright@propowner.com",
+      "role": "owner",
+      "avatar": "AW",
+      "phone": "+1 (555) 234-8901",
+      "active": true
+    }
+  ],
+  "bookings": [
+    {
+      "id": "book-1",
+      "apartmentId": "apt-1",
+      "apartmentName": "test 1",
+      "areaName": "test area 2",
+      "guestName": "Julian Alvarez",
+      "guestEmail": "julian.a@outlook.com",
+      "guestPhone": "+1 (555) 831-2940",
+      "guestCount": 2,
+      "startDate": "2026-08-28",
+      "endDate": "2026-08-29",
+      "source": "Airbnb",
+      "payout": 240,
+      "status": "checked_in",
+      "notes": "Arrived at 14:30. Requested additional bath towels."
+    },
+    {
+      "id": "book-2",
+      "apartmentId": "apt-2",
+      "apartmentName": "test 2",
+      "areaName": "test area 1",
+      "guestName": "Charlotte Dubois",
+      "guestEmail": "charlotte.d@gmail.com",
+      "guestPhone": "+33 6 12 34 56 78",
+      "guestCount": 4,
+      "startDate": "2026-08-28",
+      "endDate": "2026-09-03",
+      "source": "Booking.com",
+      "payout": 1350,
+      "status": "checked_in",
+      "notes": "Family vacation. Baby cot provided."
+    },
+    {
+      "id": "book-3",
+      "apartmentId": "apt-2",
+      "apartmentName": "test 2",
+      "areaName": "test area 1",
+      "guestName": "Liam Miller",
+      "guestEmail": "lmiller@businesscorp.com",
+      "guestPhone": "+1 (555) 443-8821",
+      "guestCount": 2,
+      "startDate": "2026-09-06",
+      "endDate": "2026-09-08",
+      "source": "Airbnb",
+      "payout": 490,
+      "status": "confirmed",
+      "notes": "Late arrival expected at 21:00. Self-checkin code confirmed."
+    },
+    {
+      "id": "book-4",
+      "apartmentId": "apt-2",
+      "apartmentName": "test 2",
+      "areaName": "test area 1",
+      "guestName": "Frederik Hansen",
+      "guestEmail": "f.hansen@nordicmail.dk",
+      "guestPhone": "+45 20 12 34 56",
+      "guestCount": 3,
+      "startDate": "2026-09-09",
+      "endDate": "2026-09-13",
+      "source": "Direct",
+      "payout": 980,
+      "status": "confirmed",
+      "notes": "VIP repeat direct customer. Bottle of prosecco upon arrival."
+    },
+    {
+      "id": "book-5",
+      "apartmentId": "apt-2",
+      "apartmentName": "test 2",
+      "areaName": "test area 1",
+      "guestName": "Kenji Takahashi",
+      "guestEmail": "kenji.t@tokyo-consulting.jp",
+      "guestPhone": "+81 90 1234 5678",
+      "guestCount": 2,
+      "startDate": "2026-09-15",
+      "endDate": "2026-09-24",
+      "source": "Guesty",
+      "payout": 2200,
+      "status": "confirmed",
+      "notes": "Requested high-speed ethernet cable check."
+    },
+    {
+      "id": "book-6",
+      "apartmentId": "apt-2",
+      "apartmentName": "test 2",
+      "areaName": "test area 1",
+      "guestName": "Rachel Green",
+      "guestEmail": "rachel.g@fashionstyle.co.uk",
+      "guestPhone": "+44 7700 900123",
+      "guestCount": 4,
+      "startDate": "2026-09-25",
+      "endDate": "2026-10-02",
+      "source": "Lodgify",
+      "payout": 1750,
+      "status": "confirmed",
+      "notes": "Turnover cleaning priority high for quick switch."
+    },
+    {
+      "id": "book-7",
+      "apartmentId": "apt-1",
+      "apartmentName": "test 1",
+      "areaName": "test area 2",
+      "guestName": "Arthur Dent",
+      "guestEmail": "arthur.dent@galaxy.co.uk",
+      "guestPhone": "+44 7700 900555",
+      "guestCount": 2,
+      "startDate": "2026-09-02",
+      "endDate": "2026-09-05",
+      "source": "Booking.com",
+      "payout": 680,
+      "status": "confirmed"
+    },
+    {
+      "id": "book-8",
+      "apartmentId": "apt-1",
+      "apartmentName": "test 1",
+      "areaName": "test area 2",
+      "guestName": "Mateo Rossi",
+      "guestEmail": "mateo.rossi@milano.it",
+      "guestPhone": "+39 340 1234567",
+      "guestCount": 2,
+      "startDate": "2026-09-08",
+      "endDate": "2026-09-12",
+      "source": "Airbnb",
+      "payout": 850,
+      "status": "confirmed"
+    },
+    {
+      "id": "book-9",
+      "apartmentId": "apt-1",
+      "apartmentName": "test 1",
+      "areaName": "test area 2",
+      "guestName": "Emma Watson",
+      "guestEmail": "emma.w@cinemagroup.org",
+      "guestPhone": "+1 (555) 777-8899",
+      "guestCount": 3,
+      "startDate": "2026-09-14",
+      "endDate": "2026-09-19",
+      "source": "Guesty",
+      "payout": 1150,
+      "status": "confirmed"
+    },
+    {
+      "id": "book-10",
+      "apartmentId": "apt-1",
+      "apartmentName": "test 1",
+      "areaName": "test area 2",
+      "guestName": "Carlos Santana",
+      "guestEmail": "carlos.s@musica.es",
+      "guestPhone": "+34 600 112 233",
+      "guestCount": 4,
+      "startDate": "2026-09-21",
+      "endDate": "2026-09-26",
+      "source": "Direct",
+      "payout": 1200,
+      "status": "confirmed"
+    },
+    {
+      "id": "book-11",
+      "apartmentId": "apt-1",
+      "apartmentName": "test 1",
+      "areaName": "test area 2",
+      "guestName": "Sven Lindqvist",
+      "guestEmail": "sven.l@stockholm-tech.se",
+      "guestPhone": "+46 70 123 4567",
+      "guestCount": 2,
+      "startDate": "2026-09-28",
+      "endDate": "2026-10-04",
+      "source": "Other",
+      "payout": 1300,
+      "status": "confirmed"
+    }
+  ],
+  "cleanings": [
+    {
+      "id": "cln-1",
+      "apartmentId": "apt-1",
+      "apartmentName": "test 1",
+      "areaName": "test area 2",
+      "bookingId": "book-1",
+      "guestName": "Julian Alvarez",
+      "scheduledDate": "2026-08-29",
+      "timeWindow": "10:30 - 13:30",
+      "type": "turnover",
+      "status": "scheduled",
+      "cleanerId": "user-cleaner-1",
+      "cleanerName": "Elena Volkova",
+      "cleanerPhone": "+1 (555) 444-1234",
+      "notes": "Standard check-out turnover. Pay extra attention to the espresso machine.",
+      "checklist": [
+        {
+          "id": "c1",
+          "room": "Bedroom",
+          "task": "Strip and change bed sheets & pillowcases",
+          "completed": false
+        },
+        {
+          "id": "c2",
+          "room": "Bathroom",
+          "task": "Sanitize toilet, shower glass and mirror",
+          "completed": false
+        },
+        {
+          "id": "c3",
+          "room": "Bathroom",
+          "task": "Restock fresh bath and hand towels",
+          "completed": false
+        },
+        {
+          "id": "c4",
+          "room": "Kitchen",
+          "task": "Clean microwave, cooktop and empty fridge",
+          "completed": false
+        },
+        {
+          "id": "c5",
+          "room": "Kitchen",
+          "task": "Replenish coffee capsules and welcome pack",
+          "completed": false
+        },
+        {
+          "id": "c6",
+          "room": "Living Room",
+          "task": "Vacuum sofa cushions and mop floors",
+          "completed": false
+        },
+        {
+          "id": "c7",
+          "room": "Balcony",
+          "task": "Wipe down outdoor table and glass railing",
+          "completed": false
+        }
+      ],
+      "photos": [
+        {
+          "id": "p-1",
+          "type": "before",
+          "url": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&auto=format&fit=crop&q=80",
+          "timestamp": "2026-08-28T14:30:00Z",
+          "room": "Living Room",
+          "caption": "Pre-checkin photo test 1"
+        }
+      ],
+      "linenUsed": {
+        "bathTowels": 4,
+        "handTowels": 4,
+        "bedSheets": 2,
+        "pillowcases": 4,
+        "duvetCovers": 2
+      }
+    },
+    {
+      "id": "cln-2",
+      "apartmentId": "apt-2",
+      "apartmentName": "test 2",
+      "areaName": "test area 1",
+      "scheduledDate": "2026-08-29",
+      "timeWindow": "14:00 - 17:00",
+      "type": "deep_clean",
+      "status": "in_progress",
+      "cleanerId": "user-cleaner-2",
+      "cleanerName": "Marco Santos",
+      "cleanerPhone": "+1 (555) 444-5678",
+      "notes": "Deep carpet wash and window polishing.",
+      "checklist": [
+        {
+          "id": "c21",
+          "room": "Bedroom",
+          "task": "Wash mattress protectors and duvets",
+          "completed": true
+        },
+        {
+          "id": "c22",
+          "room": "Kitchen",
+          "task": "Descale oven and dishwasher filter",
+          "completed": true
+        },
+        {
+          "id": "c23",
+          "room": "Living Room",
+          "task": "Condition leather furniture",
+          "completed": false
+        }
+      ],
+      "photos": [
+        {
+          "id": "p-2",
+          "type": "before",
+          "url": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=80",
+          "timestamp": "2026-08-28T11:00:00Z",
+          "room": "Master Bedroom",
+          "caption": "Before carpet shampoo"
+        }
+      ],
+      "linenUsed": {
+        "bathTowels": 6,
+        "handTowels": 6,
+        "bedSheets": 3,
+        "pillowcases": 6,
+        "duvetCovers": 3
+      },
+      "startedAt": "2026-08-29T14:05:00Z"
+    }
+  ],
+  "maintenance": [
+    {
+      "id": "mnt-1",
+      "apartmentId": "apt-1",
+      "apartmentName": "test 1",
+      "areaName": "test area 2",
+      "title": "Balcony sliding door lock sticks",
+      "description": "The latch mechanism on the terrace glass sliding door is difficult to engage.",
+      "category": "Key/Lock",
+      "priority": "medium",
+      "status": "reported",
+      "estimatedBudget": 85,
+      "actualCost": 0,
+      "reportedBy": "Elena Volkova (Cleaner)",
+      "reportedAt": "2026-08-28T12:15:00Z",
+      "photos": [
+        {
+          "id": "mp-1",
+          "type": "reported",
+          "url": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=600&auto=format&fit=crop&q=80",
+          "timestamp": "2026-08-28T12:16:00Z",
+          "caption": "Sliding latch latch misalignment"
+        }
+      ],
+      "assigneeId": "user-maint-1",
+      "assigneeName": "David Reynolds"
+    },
+    {
+      "id": "mnt-2",
+      "apartmentId": "apt-2",
+      "apartmentName": "test 2",
+      "areaName": "test area 1",
+      "title": "Kitchen sink mixer aerator low pressure",
+      "description": "Aerator appears clogged with mineral deposits. Requires cleaning or swap.",
+      "category": "Plumbing",
+      "priority": "low",
+      "status": "in_progress",
+      "estimatedBudget": 45,
+      "actualCost": 20,
+      "reportedBy": "Charlotte Dubois (Guest)",
+      "reportedAt": "2026-08-27T18:00:00Z",
+      "photos": [],
+      "assigneeId": "user-maint-1",
+      "assigneeName": "David Reynolds"
+    }
+  ],
+  "linen": [
+    {
+      "id": "lin-1",
+      "name": "Bath towels",
+      "total": 60,
+      "clean": 0,
+      "dirty": 48,
+      "inTransit": 12,
+      "minThreshold": 20,
+      "unit": "pieces"
+    },
+    {
+      "id": "lin-2",
+      "name": "Hand towels",
+      "total": 50,
+      "clean": 0,
+      "dirty": 40,
+      "inTransit": 10,
+      "minThreshold": 15,
+      "unit": "pieces"
+    },
+    {
+      "id": "lin-3",
+      "name": "Bed sheets",
+      "total": 40,
+      "clean": 0,
+      "dirty": 32,
+      "inTransit": 8,
+      "minThreshold": 12,
+      "unit": "pieces"
+    },
+    {
+      "id": "lin-4",
+      "name": "Pillowcases",
+      "total": 80,
+      "clean": 0,
+      "dirty": 65,
+      "inTransit": 15,
+      "minThreshold": 25,
+      "unit": "pieces"
+    },
+    {
+      "id": "lin-5",
+      "name": "Duvet covers",
+      "total": 35,
+      "clean": 14,
+      "dirty": 18,
+      "inTransit": 3,
+      "minThreshold": 10,
+      "unit": "pieces"
+    },
+    {
+      "id": "lin-6",
+      "name": "Bath mats",
+      "total": 25,
+      "clean": 9,
+      "dirty": 14,
+      "inTransit": 2,
+      "minThreshold": 8,
+      "unit": "pieces"
+    }
+  ],
+  "warehouse": [
+    {
+      "id": "wh-1",
+      "name": "Eco Shampoo & Body Wash (300ml)",
+      "category": "Amenities",
+      "quantity": 42,
+      "unit": "bottles",
+      "minThreshold": 20,
+      "location": "Shelf A-1",
+      "costPerUnit": 3.5
+    },
+    {
+      "id": "wh-2",
+      "name": "Nespresso Espresso Pods",
+      "category": "Beverages",
+      "quantity": 180,
+      "unit": "pods",
+      "minThreshold": 60,
+      "location": "Shelf A-3",
+      "costPerUnit": 0.65
+    },
+    {
+      "id": "wh-3",
+      "name": "Microfiber Cleaning Cloths Pack",
+      "category": "Cleaning Supplies",
+      "quantity": 18,
+      "unit": "packs",
+      "minThreshold": 10,
+      "location": "Bin C-2",
+      "costPerUnit": 7.2
+    },
+    {
+      "id": "wh-4",
+      "name": "Smart Lock AA Lithium Batteries",
+      "category": "Maintenance",
+      "quantity": 24,
+      "unit": "batteries",
+      "minThreshold": 16,
+      "location": "Drawer M-1",
+      "costPerUnit": 2.1
+    },
+    {
+      "id": "wh-5",
+      "name": "Dishwasher Tablets (All-in-One)",
+      "category": "Cleaning Supplies",
+      "quantity": 95,
+      "unit": "tablets",
+      "minThreshold": 40,
+      "location": "Shelf B-2",
+      "costPerUnit": 0.35
+    }
+  ],
+  "lostItems": [
+    {
+      "id": "lost-1",
+      "apartmentId": "apt-1",
+      "apartmentName": "test 1",
+      "itemName": "Ray-Ban Aviator Sunglasses with brown leather case",
+      "category": "Accessories",
+      "description": "Found on the nightstand in the master bedroom after previous checkout.",
+      "foundDate": "2026-08-27",
+      "foundBy": "Elena Volkova",
+      "guestName": "Marcus Vance",
+      "bookingId": "book-prev-1",
+      "storageLocation": "Operations Safe Box #04",
+      "photoUrl": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop&q=80",
+      "status": "guest_contacted",
+      "notes": "Guest contacted via WhatsApp, requested courier shipment to London."
+    }
+  ],
+  "extraServices": [
+    {
+      "id": "srv-1",
+      "apartmentId": "apt-2",
+      "apartmentName": "test 2",
+      "guestName": "Charlotte Dubois",
+      "serviceName": "VIP Airport Transfer (Mercedes V-Class)",
+      "price": 110,
+      "date": "2026-08-28",
+      "status": "completed"
+    },
+    {
+      "id": "srv-2",
+      "apartmentId": "apt-2",
+      "apartmentName": "test 2",
+      "guestName": "Charlotte Dubois",
+      "serviceName": "Baby Cot & High Chair Setup",
+      "price": 35,
+      "date": "2026-08-28",
+      "status": "completed"
+    }
+  ],
+  "activityLogs": [
+    {
+      "id": "act-1788592778555",
+      "action": "SYNC",
+      "title": "Reservation synchronized",
+      "details": "test 2",
+      "timestamp": "2026-09-05T07:19:38.555Z",
+      "entityType": "booking"
+    },
+    {
+      "id": "act-1788590229498",
+      "action": "SYNC",
+      "title": "Reservation synchronized",
+      "details": "test 2",
+      "timestamp": "2026-09-05T06:37:09.498Z",
+      "entityType": "booking"
+    },
+    {
+      "id": "act-1",
+      "action": "SYNC",
+      "title": "Reservation synchronized",
+      "details": "test 1",
+      "timestamp": "2026-09-05T06:32:01.640Z",
+      "entityType": "booking",
+      "entityId": "book-1"
+    },
+    {
+      "id": "act-2",
+      "action": "CHECKIN",
+      "title": "Guest checked in",
+      "details": "Charlotte Dubois at test 2",
+      "timestamp": "2026-09-05T06:08:01.640Z",
+      "entityType": "booking",
+      "entityId": "book-2"
+    },
+    {
+      "id": "act-3",
+      "action": "MAINTENANCE",
+      "title": "New issue reported",
+      "details": "Balcony sliding door lock sticks at test 1",
+      "timestamp": "2026-09-05T04:46:01.640Z",
+      "entityType": "maintenance",
+      "entityId": "mnt-1"
+    },
+    {
+      "id": "act-4",
+      "action": "ALERT",
+      "title": "Linen stock warning",
+      "details": "Bath towels, Hand towels, Bed sheets at 0 available",
+      "timestamp": "2026-09-05T03:36:01.640Z",
+      "entityType": "linen"
+    }
+  ],
+  "telegramMessages": [
+    {
+      "id": "tg-1",
+      "sender": "bot",
+      "text": "🤖 *PropFlow Operations Bot Online*\nWelcome Elena Volkova! You are paired as Cleaner.",
+      "timestamp": "2026-08-28T08:00:00Z",
+      "type": "text"
+    },
+    {
+      "id": "tg-2",
+      "sender": "bot",
+      "text": "📋 *New Turnover Assigned*\n🏠 Apartment: *test 1* (test area 2)\n🕒 Schedule: 10:30 - 13:30\n🔑 Lockbox: 4829\n\nTap /accept_cln1 to accept.",
+      "timestamp": "2026-08-28T09:00:00Z",
+      "type": "task_assignment",
+      "buttons": [
+        {
+          "text": "✅ Accept Task",
+          "callback_data": "accept_cln-1"
+        },
+        {
+          "text": "📸 Upload Photo",
+          "callback_data": "upload_cln-1"
+        }
+      ]
+    },
+    {
+      "id": "tg-3",
+      "sender": "user",
+      "text": "✅ Accepted turnover at test 1! En route now with fresh linen sets.",
+      "timestamp": "2026-08-28T09:05:00Z",
+      "type": "text"
+    },
+    {
+      "id": "tg-1788590229444-user",
+      "sender": "user",
+      "text": "/link 482910",
+      "timestamp": "2026-09-05T06:37:09.444Z"
+    },
+    {
+      "id": "tg-1788590229445-1",
+      "sender": "bot",
+      "text": "🎉 *Account Successfully Linked!*\n\nHello *Elena Volkova* (CLEANER)!\nYou will now receive live turnover notifications, schedule updates, and urgent alerts directly here.\n\n*Available Commands:*\n• /tasks - View your upcoming cleaning/maintenance jobs\n• /linen - Check linen stock availability\n• /report_lost - Report an item found in an apartment\n• /report_maintenance - Flag an apartment maintenance defect",
+      "timestamp": "2026-09-05T06:37:10.045Z"
+    }
+  ]
+}
