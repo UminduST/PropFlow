@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "npm run build:server && npm --prefix client run build",
   "builds": [
     {
       "src": "server/src/index.ts",
