@@ -109,4 +109,5 @@ PropFlow is an end-to-end apartment turnover, cleaning operations, and property 
    - Backend API: http://localhost:5000
   
 ### License
-   -This project is open-source and available under the MIT License.
+
+   - This project is open-source and available under the MIT License.
