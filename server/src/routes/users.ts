@@ -21,15 +21,16 @@ router.post('/', (req, res) => {
     .toUpperCase();
 
   const newUser: SystemUser = {
-    id: `user-${uuidv4().substring(0, 8)}`,
-    name,
-    email,
-    role,
-    avatar: initials || 'US',
-    phone,
-    active: true,
-    telegramPin: Math.floor(100000 + Math.random() * 900000).toString()
-  };
+  id: "...", // your generated id or logic
+  name: req.body.name,
+  username: req.body.username || req.body.email.split('@')[0], // Add this line
+  email: req.body.email,
+  role: req.body.role,
+  avatar: req.body.avatar,
+  phone: req.body.phone,
+  active: true,
+  telegramPin: "..."
+};
 
   db.update(data => {
     data.users.push(newUser);

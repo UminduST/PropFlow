@@ -1,15 +1,12 @@
 {
-  "name": "propflow-workspace",
+  "name": "propflow",
   "version": "1.0.0",
-  "description": "Apartment Cleaning and Property-Operations Management System",
   "private": true,
   "scripts": {
-    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
-    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
-    "build": "npm --prefix client run build",
-    "start": "npm --prefix server start"
-  },
-  "devDependencies": {
-    "concurrently": "^9.1.2"
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build:client": "npm --prefix client run build",
+    "build:server": "npm --prefix server run build",
+    "build": "npm run build:server && npm run build:client",
+    "start": "node server/dist/index.js"
   }
 }
