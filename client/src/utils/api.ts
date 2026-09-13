@@ -1,6 +1,31 @@
 const API_BASE = '/api';
 
 export const api = {
+  // Auth
+  async login(username: string, password: string) {
+    const res = await fetch(`${API_BASE}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.error || 'Login failed');
+    }
+    return res.json();
+  },
+  async getMe(token: string) {
+    const res = await fetch(`${API_BASE}/auth/me`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error('Unauthorized');
+    return res.json();
+  },
+  async logout() {
+    const res = await fetch(`${API_BASE}/auth/logout`, { method: 'POST' });
+    return res.json();
+  },
+
   // Dashboard
   async getDashboard() {
     const res = await fetch(`${API_BASE}/dashboard`);

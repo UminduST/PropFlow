@@ -1,87 +1,84 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { SystemUser, UserRole } from '../types/index.js';
+import { api } from '../utils/api.js';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
-  currentUser: SystemUser;
-  setCurrentUser: (user: SystemUser) => void;
+  currentUser: SystemUser | null;
+  setCurrentUser: (user: SystemUser | null) => void;
+  token: string | null;
+  setToken: (token: string | null) => void;
+  isLoading: boolean;
+  logout: () => void;
   switchRole: (role: UserRole) => void;
   allUsers: SystemUser[];
 }
 
-const defaultUsers: SystemUser[] = [
-  {
-    id: 'user-admin',
-    name: 'Administrator Administrator',
-    email: 'admin@propflow.com',
-    role: 'administrator',
-    avatar: 'AD',
-    phone: '+1 (555) 001-1122',
-    active: true
-  },
-  {
-    id: 'user-manager',
-    name: 'Sarah Connor (Ops Manager)',
-    email: 'operations@propflow.com',
-    role: 'operations_manager',
-    avatar: 'SC',
-    phone: '+1 (555) 002-2233',
-    active: true
-  },
-  {
-    id: 'user-cleaner-1',
-    name: 'Elena Volkova (Cleaner)',
-    email: 'elena.cleaner@propflow.com',
-    role: 'cleaner',
-    avatar: 'EV',
-    telegramPin: '482910',
-    telegramChatId: 'chat_elena_101',
-    phone: '+1 (555) 444-1234',
-    active: true
-  },
-  {
-    id: 'user-cleaner-2',
-    name: 'Marco Santos (Cleaner)',
-    email: 'marco.cleaner@propflow.com',
-    role: 'cleaner',
-    avatar: 'MS',
-    telegramPin: '719304',
-    phone: '+1 (555) 444-5678',
-    active: true
-  },
-  {
-    id: 'user-maint-1',
-    name: 'David Reynolds (Maintenance)',
-    email: 'david.tech@propflow.com',
-    role: 'maintenance',
-    avatar: 'DR',
-    telegramPin: '593821',
-    telegramChatId: 'chat_david_202',
-    phone: '+1 (555) 888-9900',
-    active: true
-  },
-  {
-    id: 'user-owner-1',
-    name: 'Alexander Wright (Owner)',
-    email: 'alex.wright@propowner.com',
-    role: 'owner',
-    avatar: 'AW',
-    phone: '+1 (555) 234-8901',
-    active: true
-  }
-];
-
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<SystemUser>(defaultUsers[0]);
+  const [currentUser, setCurrentUser] = useState<SystemUser | null>(null);
+  const [token, setTokenState] = useState<string | null>(localStorage.getItem('propflow_token'));
+  const [isLoading, setIsLoading] = useState(true);
+  const [allUsers, setAllUsers] = useState<SystemUser[]>([]);
 
+  const setToken = (newToken: string | null) => {
+    setTokenState(newToken);
+    if (newToken) {
+      localStorage.setItem('propflow_token', newToken);
+    } else {
+      localStorage.removeItem('propflow_token');
+    }
+  };
+
+  const logout = async () => {
+    try {
+      await api.logout();
+    } catch (e) {}
+    setToken(null);
+    setCurrentUser(null);
+  };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (!token) {
+        setIsLoading(false);
+        return;
+      }
+      try {
+        const data = await api.getMe(token);
+        setCurrentUser(data.user);
+      } catch (err) {
+        console.error("Auth error:", err);
+        setToken(null);
+        setCurrentUser(null);
+      }
+      setIsLoading(false);
+    };
+
+    fetchUser();
+    
+    // Optional: fetch all users for the "switchRole" mock functionality if still needed
+    api.getUsers().then(users => setAllUsers(users)).catch(() => {});
+  }, [token]);
+
+  // For testing purposes during transition (can be removed later)
   const switchRole = (role: UserRole) => {
-    const found = defaultUsers.find(u => u.role === role);
+    const found = allUsers.find(u => u.role === role);
     if (found) setCurrentUser(found);
   };
 
   return (
-    <AuthContext.Provider value={{ currentUser, setCurrentUser, switchRole, allUsers: defaultUsers }}>
+    <AuthContext.Provider value={{ 
+      currentUser, 
+      setCurrentUser, 
+      token, 
+      setToken, 
+      isLoading, 
+      logout,
+      switchRole,
+      allUsers 
+    }}>
       {children}
     </AuthContext.Provider>
   );

@@ -18,11 +18,30 @@ import { ExtraServicesPage } from './pages/ExtraServicesPage.js';
 import { TelegramPinPage } from './pages/TelegramPinPage.js';
 import { UsersPage } from './pages/UsersPage.js';
 import { SettingsPage } from './pages/SettingsPage.js';
+import { LoginPage } from './pages/LoginPage.js';
 
-import { AuthProvider } from './context/AuthContext.js';
+import { AuthProvider, useAuth } from './context/AuthContext.js';
 import { DashboardData } from './types/index.js';
 import { api } from './utils/api.js';
-import { Search, X, Bot } from 'lucide-react';
+import { Search, X, Bot, Loader2 } from 'lucide-react';
+
+const RequireAuth: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { currentUser, isLoading } = useAuth();
+  
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+      </div>
+    );
+  }
+  
+  if (!currentUser) {
+    return <LoginPage />;
+  }
+
+  return <>{children}</>;
+};
 
 function AppContent() {
   const navigate = useNavigate();
@@ -82,103 +101,106 @@ function AppContent() {
   );
 
   return (
-    <div className="flex min-h-screen bg-[#f8fafc]">
-      {/* Dark Slate Navigation Sidebar matching screenshots */}
-      <Sidebar
-        onOpenTelegramSimulator={() => setTelegramSimulatorOpen(true)}
-        unreadAlertsCount={dashboardData?.priorityQueue?.length || 4}
-      />
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0">
-        <Header
-          lastSyncTime={lastSyncTime}
-          onSync={handleGlobalSync}
-          onOpenSearch={() => setSearchModalOpen(true)}
-          onOpenSettings={() => navigate('/settings')}
+    <RequireAuth>
+      <div className="flex min-h-screen bg-[#f8fafc]">
+        {/* Dark Slate Navigation Sidebar matching screenshots */}
+        <Sidebar
+          onOpenTelegramSimulator={() => setTelegramSimulatorOpen(true)}
+          unreadAlertsCount={dashboardData?.priorityQueue?.length || 4}
         />
 
-        <main className="flex-1 p-6 lg:p-8 max-w-7xl w-full mx-auto">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <HomePage
-                  dashboardData={dashboardData}
-                  onOpenTelegramSimulator={() => setTelegramSimulatorOpen(true)}
-                  onRefresh={loadData}
-                />
-              }
-            />
-            <Route path="/calendar" element={<CalendarPage onActivityTriggered={loadData} />} />
-            <Route path="/apartments" element={<ApartmentsPage />} />
-            <Route path="/people" element={<PeoplePage />} />
-            <Route path="/zones" element={<ZonesPage />} />
-            <Route path="/cleaning-tomorrow" element={<CleaningTomorrowPage />} />
-            <Route path="/maintenance" element={<MaintenancePage />} />
-            <Route path="/linen" element={<LinenPage />} />
-            <Route path="/warehouse" element={<WarehousePage />} />
-            <Route path="/alerts" element={<AlertsPage />} />
-            <Route path="/extra-services" element={<ExtraServicesPage />} />
-            <Route
-              path="/telegram-pin"
-              element={<TelegramPinPage onOpenSimulator={() => setTelegramSimulatorOpen(true)} />}
-            />
-            <Route path="/system-users" element={<UsersPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
-          </Routes>
-        </main>
-      </div>
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col min-w-0">
+          <Header
+            lastSyncTime={lastSyncTime}
+            onSync={handleGlobalSync}
+            onOpenSearch={() => setSearchModalOpen(true)}
+            onOpenSettings={() => navigate('/settings')}
+          />
 
-      {/* Embedded Live Telegram Bot Simulator Modal */}
-      <TelegramSimulatorModal
-        isOpen={telegramSimulatorOpen}
-        onClose={() => setTelegramSimulatorOpen(false)}
-        onActivityTriggered={loadData}
-      />
-
-      {/* Global Quick Search (Ctrl+K) */}
-      {searchModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in">
-          <div className="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
-            <div className="p-4 border-b border-slate-100 flex items-center gap-3">
-              <Search className="w-5 h-5 text-slate-400" />
-              <input
-                type="text"
-                autoFocus
-                placeholder="Type a command or search section..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 text-sm bg-transparent border-none outline-hidden text-slate-800 placeholder-slate-400"
+          <main className="flex-1 p-6 lg:p-8 max-w-7xl w-full mx-auto">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <HomePage
+                    dashboardData={dashboardData}
+                    onOpenTelegramSimulator={() => setTelegramSimulatorOpen(true)}
+                    onRefresh={loadData}
+                  />
+                }
               />
-              <button onClick={() => setSearchModalOpen(false)} className="text-slate-400 hover:text-slate-600">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+              <Route path="/calendar" element={<CalendarPage onActivityTriggered={loadData} />} />
+              <Route path="/apartments" element={<ApartmentsPage />} />
+              <Route path="/people" element={<PeoplePage />} />
+              <Route path="/zones" element={<ZonesPage />} />
+              <Route path="/cleaning-tomorrow" element={<CleaningTomorrowPage />} />
+              <Route path="/maintenance" element={<MaintenancePage />} />
+              <Route path="/linen" element={<LinenPage />} />
+              <Route path="/warehouse" element={<WarehousePage />} />
+              <Route path="/alerts" element={<AlertsPage />} />
+              <Route path="/extra-services" element={<ExtraServicesPage />} />
+              <Route
+                path="/telegram-pin"
+                element={<TelegramPinPage onOpenSimulator={() => setTelegramSimulatorOpen(true)} />}
+              />
+              <Route path="/system-users" element={<UsersPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/login" element={<LoginPage />} />
+            </Routes>
+          </main>
+        </div>
 
-            <div className="p-2 max-h-80 overflow-y-auto space-y-1 text-xs">
-              {filteredSearch.map((item, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    navigate(item.path);
-                    setSearchModalOpen(false);
-                    setSearchQuery('');
-                  }}
-                  className="p-3 rounded-2xl hover:bg-slate-50 cursor-pointer transition-colors flex items-center justify-between"
-                >
-                  <div>
-                    <div className="font-bold text-slate-900">{item.title}</div>
-                    <div className="text-[11px] text-slate-400">{item.subtitle}</div>
+        {/* Embedded Live Telegram Bot Simulator Modal */}
+        <TelegramSimulatorModal
+          isOpen={telegramSimulatorOpen}
+          onClose={() => setTelegramSimulatorOpen(false)}
+          onActivityTriggered={loadData}
+        />
+
+        {/* Global Quick Search (Ctrl+K) */}
+        {searchModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in">
+            <div className="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+              <div className="p-4 border-b border-slate-100 flex items-center gap-3">
+                <Search className="w-5 h-5 text-slate-400" />
+                <input
+                  type="text"
+                  autoFocus
+                  placeholder="Type a command or search section..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-1 text-sm bg-transparent border-none outline-hidden text-slate-800 placeholder-slate-400"
+                />
+                <button onClick={() => setSearchModalOpen(false)} className="text-slate-400 hover:text-slate-600">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="p-2 max-h-80 overflow-y-auto space-y-1 text-xs">
+                {filteredSearch.map((item, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      navigate(item.path);
+                      setSearchModalOpen(false);
+                      setSearchQuery('');
+                    }}
+                    className="p-3 rounded-2xl hover:bg-slate-50 cursor-pointer transition-colors flex items-center justify-between"
+                  >
+                    <div>
+                      <div className="font-bold text-slate-900">{item.title}</div>
+                      <div className="text-[11px] text-slate-400">{item.subtitle}</div>
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-400">Go ↵</span>
                   </div>
-                  <span className="text-[10px] font-mono text-slate-400">Go ↵</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </RequireAuth>
   );
 }
 

@@ -16,6 +16,7 @@ import lostItemsRoutes from './routes/lostItems.js';
 import telegramRoutes from './routes/telegram.js';
 import exportsRoutes from './routes/exports.js';
 import usersRoutes from './routes/users.js';
+import authRoutes from './routes/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -81,6 +82,7 @@ app.use('/api/lost-items', lostItemsRoutes);
 app.use('/api/telegram', telegramRoutes);
 app.use('/api/exports', exportsRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/auth', authRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
